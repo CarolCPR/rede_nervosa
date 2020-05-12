@@ -29,3 +29,5 @@ https://learn.ml5js.org/docs/#/reference/index
 
 Speech to Text with JavaScript:
 https://tutorialzine.com/2017/08/converting-from-speech-to-text-with-javascript
+
+the coding train neural network: https://editor.p5js.org/codingtrain/sketches/5A_TJHA1
