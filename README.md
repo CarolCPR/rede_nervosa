@@ -23,3 +23,9 @@ necessários:
 
 repositório github:
 https://github.com/CarolCPR/rede_nervosa
+
+ml5js:
+https://learn.ml5js.org/docs/#/reference/index
+
+Speech to Text with JavaScript:
+https://tutorialzine.com/2017/08/converting-from-speech-to-text-with-javascript
