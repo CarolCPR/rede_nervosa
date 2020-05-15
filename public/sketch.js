@@ -22,8 +22,6 @@ function goClassify(){
         if(error){
             console.error(error);
         }else {
-            //labelP.html(result.label);
-            //console.log(result);
             label = result.label;
             labelP.html(result.label);
             goClassify();
