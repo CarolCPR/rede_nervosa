@@ -13,7 +13,7 @@ function setup() {
   video.size(320, 240);
   video.hide();
   features = ml5.featureExtractor('MobileNet', modelReady);
-  //knn = ml5.KNNClassifier();
+  knn = ml5.KNNClassifier();
   labelP = createP('need training data');
   labelP.style('font-size', '32pt');
   button = createButton('uso a mão...');
@@ -51,18 +51,18 @@ function keyPressed(){
 
 function modelReady(){
   console.log("MobileNet loaded!");
-  knn = ml5.KNNClassifier();
+  /*knn = ml5.KNNClassifier();
   knn.load("model_4.json", function(){
     console.log('KNN Data Loaded');
     goClassify();
-    });
+    });*/
 }
 
 function draw() {
-  /*if(!ready && knn.getNumLabels() > 0){
+  if(!ready && knn.getNumLabels() > 0){
     goClassify();
     ready = true;
-  }*/
+  }
   image(video, 0, 0);
 
   if(i==0){
