@@ -14,7 +14,7 @@ function setup() {
   video.hide();
   features = ml5.featureExtractor('MobileNet', modelReady);
   //knn = ml5.KNNClassifier();
-  labelP = createP('need training data');
+  labelP = createP('começando treinamento...');
   labelP.style('font-size', '32pt');
   button = createButton('uso a mão...');
   button.position(20,20);
@@ -35,7 +35,26 @@ function goClassify(){
             console.error(error);
         }else {
             label = result.label;
-            labelP.html(label);
+            switch(result.label){
+              case '3':
+              case '2':
+                labelP.html('s');
+              case '1':
+                labelP.html('a');
+              case '0':
+                labelP.html('b');
+              default:
+                labelP.html(label);
+            }
+            if(result.label == '3') 
+              labelP.html('...');
+            else if(result.label == '2') 
+              labelP.html('s');
+            else if(result.label == '1') 
+              labelP.html('a');
+            else if(result.label == '0')
+              labelP.html('b');
+            else labelP.html(label);
             goClassify();
         }
       });
@@ -67,11 +86,11 @@ function draw() {
 
   if(i==0){
     noStroke();
-    fill(235, 190, 14, 100);
+    fill(255, 124, 23, 100);
     rect(0, 100, 120, 240);
   }else{
     noStroke();
-    fill(235, 190, 14, 100);
+    fill(255, 124, 23, 100);
     rect(200, 100, 120, 240);
   }
   
