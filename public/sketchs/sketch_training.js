@@ -13,12 +13,15 @@ function setup() {
   video.size(320, 240);
   video.hide();
   features = ml5.featureExtractor('MobileNet', modelReady);
-  //knn = ml5.KNNClassifier();
+  knn = ml5.KNNClassifier();
   labelP = createP('começando treinamento...');
   labelP.style('font-size', '32pt');
-  button = createButton('uso a mão...');
+  button = createButton('uso a mão...')
+  .mousePressed(changeButton);
   button.position(20,20);
-  button.mousePressed(changeButton);
+  button2 = createButton('testar')
+  .mousePressed(() => window.open('index.html'));
+  button2.position(20,80);
 }
 
 function changeButton(){
@@ -35,26 +38,7 @@ function goClassify(){
             console.error(error);
         }else {
             label = result.label;
-            switch(result.label){
-              case '3':
-              case '2':
-                labelP.html('s');
-              case '1':
-                labelP.html('a');
-              case '0':
-                labelP.html('b');
-              default:
-                labelP.html(label);
-            }
-            if(result.label == '3') 
-              labelP.html('...');
-            else if(result.label == '2') 
-              labelP.html('s');
-            else if(result.label == '1') 
-              labelP.html('a');
-            else if(result.label == '0')
-              labelP.html('b');
-            else labelP.html(label);
+            labelP.html(label);
             goClassify();
         }
       });
@@ -70,18 +54,18 @@ function keyPressed(){
 
 function modelReady(){
   console.log("MobileNet loaded!");
-  knn = ml5.KNNClassifier();
-  knn.load("model_4.json", function(){
+  /*knn = ml5.KNNClassifier();
+  knn.load("models/model_4.json", function(){
     console.log('KNN Data Loaded');
     goClassify();
-    });
+    });*/
 }
 
 function draw() {
-  /*if(!ready && knn.getNumLabels() > 0){
+  if(!ready && knn.getNumLabels() > 0){
     goClassify();
     ready = true;
-  }*/
+  }
   image(video, 0, 0);
 
   if(i==0){
